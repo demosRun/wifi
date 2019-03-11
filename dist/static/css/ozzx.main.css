@@ -1,0 +1,133 @@
+body, html, .ox {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 清除浮动 */
+.clear {
+  clear: both;
+}
+.ox-topBar .logo-box {
+  padding: 5px;
+}.ox-login .wifi-box {
+  max-width: 400px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+  height: 278px;
+  overflow: hidden;
+}
+
+.ox-login .wifi {
+  padding: 5% 10%;
+  background-image: url('../resource/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.ox-login .input-bar {
+  height: 30px;
+  line-height: 30px;
+  box-shadow: 0px 0px 5px #b2babf inset;
+  padding: 0 5px;
+  background-color: white;
+  margin: 25px 0;
+}
+
+.ox-login .input-bar .lable {
+  width: 60px;
+  color: #7b7a7a;
+  font-size: 14px;
+}
+
+.ox-login .input-bar input {
+  height: 30px;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  width: calc(100% - 90px);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.ox-login .input-bar input::-webkit-input-placeholder {
+  /* placeholder颜色  */
+  color: #b9b9b9;
+}
+
+.ox-login .input-bar .icon {
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
+}
+
+.ox-login .input-bar .password {
+  background-image: url('../resource/lock.png');
+}
+
+.ox-login .input-bar .user {
+  background-image: url('../resource/user.png');
+}
+
+.ox-login .input-bar-item {
+  float: left;
+}
+
+.ox-login .button-bar {
+  height: 30px;
+  margin: 20px 0;
+}
+
+.ox-login .button-bar .button-box {
+  float: left;
+  height: 100%;
+  width: 50%;
+  text-align: center;
+  color: white;
+  position: relative;
+}.ox-topBar .logo-box {
+  padding: 5px;
+}.ox-auth .auth-box {
+  width: 330px;
+  margin: 0 auto;
+  background-image: url('../resource/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.ox-auth .auth-item {
+  width: 70px;
+  margin: 10px 20px;
+  float: left;
+  height: 100px;
+}
+
+.ox-auth .auth-item img {
+  margin: 0 10px;
+  width: 50px;
+}
+
+.ox-auth .auth-item .text {
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.ox-auth .auth-item .button {
+  text-align: center;
+  color: white;
+  background-color: #518fe2;
+  border-radius: 12px;
+  line-height: 25px;
+}.ox-topBar .logo-box {
+  padding: 5px;
+}

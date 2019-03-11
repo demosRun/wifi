@@ -1,0 +1,13 @@
+<template lang="pug">
+.alert-panel
+  temple(name="topBar" src="./src/page/LogoBar.page")
+  .text 用户登陆失败, 请拨打电话3668联系管理员!
+  .back.button
+    a(href="#login&in=moveFromRight&out=moveToLeft") 返回
+</template>
+
+<style lang="less">
+  .alert-panel {
+    
+  }
+</style>

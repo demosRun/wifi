@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>web认证</title>
+    <!-- 页面的元信息 -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="height=device-height,initial-scale=1,user-scalable=no,maximum-scale=1,,user-scalable=no"/>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <!-- 页面主样式文件 -->
+    <link rel="stylesheet" href="./static/css/ozzx.main.css">
+    <!-- 附属css文件 -->
+    <link rel="stylesheet" href="./static/css/main.css">
+    <link rel="stylesheet" href="./static/css/ozzx.animation.css">
+  </head>
+  <body>
+    <!-- 页面区域 -->
+    <div class="ox-login ox" id="ox-login" style="display: none;"><div class="wifi-box" @name="wifiBox"><div class="ox-topBar"><div class="logo-box"><img src="./static/resource/logo.png"></div></div><div class="wifi"><div class="input-box"><div class="user-name-bar input-bar"><div class="lable input-bar-item">用户名:</div><input class="input-bar-item" id="userName" type="text" placeholder="请输入用户名" @name="userName"><div class="icon user input-bar-item"></div><div class="clear"></div></div><div class="password-bar input-bar"><div class="lable input-bar-item">密码:</div><input class="input-bar-item" id="password" type="password" placeholder="请输入密码" @name="password"><div class="icon password input-bar-item"></div><div class="clear"></div></div><div class="button-bar"><div class="button-box"><div class="button" @click="login">登陆</div></div><div class="button-box"><div class="button" @click="reset">重置</div></div><div class="clear"></div></div></div></div></div></div>
+    <div class="ox-auth ox" id="ox-auth" style="display: none;"><div class="auth-panel"><div class="ox-topBar"><div class="logo-box"><img src="./static/resource/logo.png"></div></div><div class="auth-box"><div class="auth-item"><img src="./static/resource/oa.png"><div class="text">OA系统</div><div class="button">授权</div></div><div class="auth-item"><img src="./static/resource/oa.png"><div class="text">OA系统</div><div class="button">授权</div></div><div class="auth-item"><img src="./static/resource/oa.png"><div class="text">OA系统</div><div class="button">授权</div></div><div class="auth-item"><img src="./static/resource/oa.png"><div class="text">OA系统</div><div class="button">授权</div></div><div class="auth-item"><img src="./static/resource/oa.png"><div class="text">OA系统</div><div class="button">授权</div></div><div class="auth-item"><img src="./static/resource/oa.png"><div class="text">OA系统</div><div class="button">授权</div></div><div class="clear"></div></div></div></div>
+    <div class="ox-alert ox" id="ox-alert" style="display: none;"><div class="alert-panel"><div class="ox-topBar"><div class="logo-box"><img src="./static/resource/logo.png"></div></div><div class="text">用户登陆失败, 请拨打电话3668联系管理员!</div><div class="back button"><a href="#login&in=moveFromRight&out=moveToLeft">返回</a></div></div></div>
+    <!-- 页面脚本 -->
+    <script src="./static/js/autoReload.js" type="text/javascript"></script>
+    <!-- 主要script文件 -->
+    <script src="./static/js/ozzx.main.js" type="text/javascript"></script>
+  </body>
+</html>

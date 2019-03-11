@@ -1,0 +1,58 @@
+<template lang="pug">
+.auth-panel
+  temple(name="topBar" src="./src/page/LogoBar.page")
+  .auth-box
+    .auth-item(@for="item in authList")
+      img(src="{{item.img}}")
+      .text {{item.name}}
+      .button 授权
+    .clear
+</template>
+
+<script>
+  module.exports = {
+    data: {
+      authList: [
+        {id: 1, name: 'OA系统', img: '@&oa.png&'},
+        {id: 1, name: 'OA系统', img: '@&oa.png&'},
+        {id: 1, name: 'OA系统', img: '@&oa.png&'},
+        {id: 1, name: 'OA系统', img: '@&oa.png&'},
+        {id: 1, name: 'OA系统', img: '@&oa.png&'},
+        {id: 1, name: 'OA系统', img: '@&oa.png&'}
+      ]
+    }
+  }
+</script>
+
+<style lang="less">
+  .auth-box {
+    width: 330px;
+    margin: 0 auto;
+    background-image: url('@&bg.jpg&');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .auth-item {
+    width: 70px;
+    margin: 10px 20px;
+    float: left;
+    height: 100px;
+    img {
+      margin: 0 10px;
+      width: 50px;
+    }
+    .text {
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    .button {
+      text-align: center;
+      color: white;
+      background-color: #518fe2;
+      border-radius: 12px;
+      line-height: 25px;
+    }
+  }
+</style>

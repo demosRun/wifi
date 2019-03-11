@@ -1,0 +1,10 @@
+<template lang="pug">
+.logo-box
+  img(src="@&logo.png&")
+</template>
+
+<style lang="less">
+  .logo-box {
+    padding: 5px;
+  }
+</style>
