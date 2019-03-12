@@ -60,6 +60,7 @@ module.exports = {
   styleList: [
     {
       name: 'main',
+      resource: true,
       src: './src/main.css'
     }
   ],

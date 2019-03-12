@@ -3,6 +3,7 @@
   temple(name="topBar" src="./src/page/LogoBar.page")
   .wifi
     .input-box
+      .authorize(@name="authorize")
       .user-name-bar.input-bar
         .lable.input-bar-item 用户名:
         input.input-bar-item#userName(type="text", placeholder="请输入用户名", @name="userName")
@@ -24,10 +25,15 @@
 <script>
   module.exports = {
     created: function () {
-      console.log('sd')
-      const ratio = $tool.getScreenInfo().ratio
-      if (ratio > 1) {
-        $dom('wifiBox').style.bottom = '55px'
+      // 禁止页面拖动
+      // document.body.ontouchmove=function(e){
+      //   e.preventDefault();
+      // }
+      // 判断是否为授权
+      
+      const authorizeName = getQueryString(location.href, 'authorizeName')
+      if (authorizeName) {
+        $dom('authorize').innerText = authorizeName + '授权页面'
       }
     },
     reset: function () {
@@ -40,11 +46,20 @@
       const password = $dom('password').value
       console.log('用户名:', userName)
       console.log('密码:', password)
+      const authorize = getQueryString(location.href, 'authorize')
       // 判断用户名或者密码是否为空
       if (userName && password) {
+        if (authorize) {
+          alert('这是一个授权页面,id为' + authorize)
+        }
         $go('auth', 'moveToLeft', 'moveFromRight')
       } else {
-        $go('alert', 'moveToLeft', 'moveFromRight')
+        if (authorize) {
+          alert('授权失败,id为' + authorize)
+          window.location.href = "#alert&in=moveToLeft&out=moveFromRight&authorize=" + authorize
+        } else {
+          $go('alert', 'moveToLeft', 'moveFromRight')
+        }
       }
     }
   }
@@ -52,41 +67,49 @@
 
 <style lang="less">
 .wifi-box {
-  max-width: 400px;
+  width: 100%;
+  height: 100%;
+}
+.wifi {
+  max-width: 305px;
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   margin: auto;
-  height: 278px;
+  height: 190px;
   overflow: hidden;
+  bottom: 0;
+  background-color: rgba(135, 206, 235, 0.2);
+  padding: 10px;
+  border-radius: 5px;
 }
-.wifi {
-  padding: 5% 10%;
-  background-image: url('@&bg.jpg&');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  max-width: 400px;
-  margin: 0 auto;
+.authorize {
+  color: #7b7a7a;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
 }
 .input-bar {
-  height: 30px;
-  line-height: 30px;
+  height: 40px;
+  line-height: 40px;
   box-shadow: 0px 0px 5px #b2babf inset;
   padding: 0 5px;
   background-color: white;
-  margin: 25px 0;
+  margin-bottom: 15px;
+  border-radius: 5px;
   .lable {
-    width: 60px;
+    width: 40px;
     color: #7b7a7a;
-    font-size: 14px;
+    font-size: 12px;
+    padding: 0 10px;
   }
   input {
-    height: 30px;
+    height: 40px;
     border: none;
     padding: 0;
     background-color: transparent;
-    width: calc(100% - 90px);
+    width: calc(100% - 100px);
     font-size: 12px;
     letter-spacing: 1px;
   }
@@ -95,8 +118,8 @@
     color: #b9b9b9;
   }
   .icon {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 16px;
@@ -112,8 +135,8 @@
   float: left;
 }
 .button-bar {
-  height: 30px;
-  margin: 20px 0;
+  height: 40px;
+  margin: 5px 0;
   .button-box {
     float: left;
     height: 100%;

@@ -130,6 +130,9 @@ function pgNameHandler(dom) {
           newPageFunction.$event = event;
           newPageFunction.domList = window.ozzx.domList;
           newPageFunction[clickFor].apply(newPageFunction, parameterArr);
+        } else {
+          // 如果没有此方法则弹出警告
+          console.error("Can't find function: " + clickFor);
         }
       };
     } // 递归处理所有子Dom结点
@@ -175,7 +178,7 @@ window.onload = function () {
       $data = ozzx.script[page].data;
       runPageFunction(page, entryDom);
     } else {
-      console.error('入口文件设置错误!');
+      console.error('入口文件设置错误,错误值为: ', entryDom);
     }
   } else {
     console.error('未设置程序入口!');
@@ -200,11 +203,15 @@ window.ozzx = {
   script: {
     "login": {
       "created": function created() {
-        console.log('sd');
-        var ratio = $tool.getScreenInfo().ratio;
+        // 禁止页面拖动
+        // document.body.ontouchmove=function(e){
+        //   e.preventDefault();
+        // }
+        // 判断是否为授权
+        var authorizeName = getQueryString(location.href, 'authorizeName');
 
-        if (ratio > 1) {
-          $dom('wifiBox').style.bottom = '55px';
+        if (authorizeName) {
+          $dom('authorize').innerText = authorizeName + '授权页面';
         }
       },
       "reset": function reset() {
@@ -216,12 +223,22 @@ window.ozzx = {
         var userName = $dom('userName').value;
         var password = $dom('password').value;
         console.log('用户名:', userName);
-        console.log('密码:', password); // 判断用户名或者密码是否为空
+        console.log('密码:', password);
+        var authorize = getQueryString(location.href, 'authorize'); // 判断用户名或者密码是否为空
 
         if (userName && password) {
+          if (authorize) {
+            alert('这是一个授权页面,id为' + authorize);
+          }
+
           $go('auth', 'moveToLeft', 'moveFromRight');
         } else {
-          $go('alert', 'moveToLeft', 'moveFromRight');
+          if (authorize) {
+            alert('授权失败,id为' + authorize);
+            window.location.href = "#alert&in=moveToLeft&out=moveFromRight&authorize=" + authorize;
+          } else {
+            $go('alert', 'moveToLeft', 'moveFromRight');
+          }
         }
       }
     },
@@ -252,10 +269,44 @@ window.ozzx = {
           "id": 1,
           "name": "OA系统",
           "img": "./static/resource/oa.png"
+        }, {
+          "id": 1,
+          "name": "OA系统",
+          "img": "./static/resource/oa.png"
+        }, {
+          "id": 1,
+          "name": "OA系统",
+          "img": "./static/resource/oa.png"
+        }, {
+          "id": 1,
+          "name": "OA系统",
+          "img": "./static/resource/oa.png"
+        }, {
+          "id": 1,
+          "name": "OA系统",
+          "img": "./static/resource/oa.png"
+        }, {
+          "id": 1,
+          "name": "OA系统",
+          "img": "./static/resource/oa.png"
+        }, {
+          "id": 1,
+          "name": "OA系统",
+          "img": "./static/resource/oa.png"
         }]
       }
     },
-    "alert": {}
+    "alert": {
+      "created": function created() {
+        var authorize = getQueryString(location.href, 'authorize');
+
+        if (authorize) {
+          $dom('alertText').innerText = '授权失败, 请拨打电话3668联系管理员!';
+        } else {
+          $dom('alertText').innerText = '用户登陆失败, 请拨打电话3668联系管理员!';
+        }
+      }
+    }
   },
   tool: {},
   entry: "login",
@@ -293,16 +344,19 @@ function animation(oldDom, newDom, animationIn, animationOut) {
   oldDom.addEventListener("animationend", oldDomFun);
   newDom.addEventListener("animationend", newDomFun);
   oldDom.style.position = 'absolute';
+  oldDom.style.overflow = 'hidden';
   newDom.style.display = 'block';
   newDom.style.position = 'absolute'; // document.body.style.overflow = 'hidden'
 
   animationIn.split(',').forEach(function (value) {
     console.log('add:' + value);
     oldDom.classList.add('ox-page-' + value);
+    oldDom.classList.add('ozzx-animation');
   });
   animationOut.split(',').forEach(function (value) {
     console.log('add:' + value);
     newDom.classList.add('ox-page-' + value);
+    oldDom.classList.add('ozzx-animation');
   }); // 旧DOM执行函数
 
   function oldDomFun() {
@@ -314,6 +368,7 @@ function animation(oldDom, newDom, animationIn, animationOut) {
     animationIn.split(',').forEach(function (value) {
       console.log('del:' + value);
       oldDom.classList.remove('ox-page-' + value);
+      oldDom.classList.remove('ozzx-animation');
     }); // 移除监听
 
     oldDom.removeEventListener('animationend', oldDomFun, false);
@@ -326,6 +381,7 @@ function animation(oldDom, newDom, animationIn, animationOut) {
     animationOut.split(',').forEach(function (value) {
       console.log('del:' + value);
       newDom.classList.remove('ox-page-' + value);
+      newDom.classList.remove('ozzx-animation');
     }); // 移除监听
 
     newDom.removeEventListener('animationend', newDomFun, false);
@@ -375,18 +431,3 @@ function switchPage(oldUrlParam, newUrlParam) {
   $data = ozzx.script[newPage].data;
   runPageFunction(newPage, newDom);
 }
-/**
-* 获取屏幕信息
-* @return {object} 屏幕信息
-*/
-
-
-ozzx.tool.getScreenInfo = function () {
-  return {
-    clientWidth: document.body.clientWidth,
-    clientHeight: document.body.clientHeight,
-    ratio: document.body.clientWidth / document.body.clientHeight,
-    // 缩放比例
-    devicePixelRatio: window.devicePixelRatio || 1
-  };
-};

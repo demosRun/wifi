@@ -1,13 +1,47 @@
 <template lang="pug">
 .alert-panel
   temple(name="topBar" src="./src/page/LogoBar.page")
-  .text 用户登陆失败, 请拨打电话3668联系管理员!
-  .back.button
-    a(href="#login&in=moveFromRight&out=moveToLeft") 返回
+  .alert-box
+    .text(@name="alertText")
+    .back.button
+      a(href="#login&in=moveToRight&out=moveFromLeft") 返回
 </template>
 
+<script>
+module.exports = {
+  created: function () {
+    const authorize = getQueryString(location.href, 'authorize')
+    if (authorize) {
+      $dom('alertText').innerText = '授权失败, 请拨打电话3668联系管理员!'
+    } else {
+      $dom('alertText').innerText = '用户登陆失败, 请拨打电话3668联系管理员!'
+    }
+  }
+}
+</script>
+
+
 <style lang="less">
-  .alert-panel {
-    
+  .alert-box {
+    max-width: 305px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    height: 185px;
+    overflow: hidden;
+    bottom: 0;
+    background-color: rgba(135, 206, 235, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .text {
+    height: 100px;
+    color: #7b7a7a;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 20px 10px;
+    line-height: 1.8rem;
   }
 </style>

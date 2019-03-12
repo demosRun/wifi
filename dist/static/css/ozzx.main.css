@@ -9,49 +9,62 @@ body, html, .ox {
 .clear {
   clear: both;
 }
+
+.ozzx-animation {
+  overflow: hidden;
+}
 .ox-topBar .logo-box {
-  padding: 5px;
+  padding: 15px;
 }.ox-login .wifi-box {
-  max-width: 400px;
+  width: 100%;
+  height: 100%;
+}
+
+.ox-login .wifi {
+  max-width: 305px;
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   margin: auto;
-  height: 278px;
+  height: 190px;
   overflow: hidden;
+  bottom: 0;
+  background-color: rgba(135, 206, 235, 0.2);
+  padding: 10px;
+  border-radius: 5px;
 }
 
-.ox-login .wifi {
-  padding: 5% 10%;
-  background-image: url('../resource/bg.jpg');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  max-width: 400px;
-  margin: 0 auto;
+.ox-login .authorize {
+  color: #7b7a7a;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
 }
 
 .ox-login .input-bar {
-  height: 30px;
-  line-height: 30px;
+  height: 40px;
+  line-height: 40px;
   box-shadow: 0px 0px 5px #b2babf inset;
   padding: 0 5px;
   background-color: white;
-  margin: 25px 0;
+  margin-bottom: 15px;
+  border-radius: 5px;
 }
 
 .ox-login .input-bar .lable {
-  width: 60px;
+  width: 40px;
   color: #7b7a7a;
-  font-size: 14px;
+  font-size: 12px;
+  padding: 0 10px;
 }
 
 .ox-login .input-bar input {
-  height: 30px;
+  height: 40px;
   border: none;
   padding: 0;
   background-color: transparent;
-  width: calc(100% - 90px);
+  width: calc(100% - 100px);
   font-size: 12px;
   letter-spacing: 1px;
 }
@@ -62,8 +75,8 @@ body, html, .ox {
 }
 
 .ox-login .input-bar .icon {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 16px;
@@ -82,8 +95,8 @@ body, html, .ox {
 }
 
 .ox-login .button-bar {
-  height: 30px;
-  margin: 20px 0;
+  height: 40px;
+  margin: 5px 0;
 }
 
 .ox-login .button-bar .button-box {
@@ -94,25 +107,43 @@ body, html, .ox {
   color: white;
   position: relative;
 }.ox-topBar .logo-box {
-  padding: 5px;
-}.ox-auth .auth-box {
+  padding: 15px;
+}.ox-auth .auth-panel {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.ox-auth .auth-box {
   width: 330px;
   margin: 0 auto;
-  background-image: url('../resource/bg.jpg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  padding: 20px 0;
+  background-color: rgba(135, 206, 235, 0.2);
+  border-radius: 5px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .ox-auth .auth-item {
-  width: 70px;
-  margin: 10px 20px;
+  width: 110px;
   float: left;
-  height: 100px;
+  height: 135px;
+  position: relative;
 }
 
 .ox-auth .auth-item img {
-  margin: 0 10px;
   width: 50px;
+  display: block;
+  margin: 10px auto;
 }
 
 .ox-auth .auth-item .text {
@@ -120,14 +151,28 @@ body, html, .ox {
   text-align: center;
   font-size: 14px;
   line-height: 20px;
+}.ox-topBar .logo-box {
+  padding: 15px;
+}.ox-alert .alert-box {
+  max-width: 305px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+  height: 185px;
+  overflow: hidden;
+  bottom: 0;
+  background-color: rgba(135, 206, 235, 0.2);
+  padding: 10px;
+  border-radius: 5px;
 }
 
-.ox-auth .auth-item .button {
+.ox-alert .text {
+  height: 100px;
+  color: #7b7a7a;
   text-align: center;
-  color: white;
-  background-color: #518fe2;
-  border-radius: 12px;
-  line-height: 25px;
-}.ox-topBar .logo-box {
-  padding: 5px;
+  font-size: 1.2rem;
+  padding: 20px 10px;
+  line-height: 1.8rem;
 }
